@@ -4,6 +4,9 @@ import axios from 'axios';
 function AllCountries() {
   const [countries, setCountries] = useState([]);
 
+
+
+
   useEffect(() => {
     async function fetchCountries() {
       try {
@@ -18,11 +21,16 @@ function AllCountries() {
     fetchCountries();
   }, []);
 
+
+
+
   const handleAddToMyRecords = (country) => {
-    // Implement your logic to add the country to "My Records"
     console.log('Add to My Records:', country);
   };
 
+
+
+  
   return (
     <div>
       <h1>Welcome to the All Countries Page</h1>
