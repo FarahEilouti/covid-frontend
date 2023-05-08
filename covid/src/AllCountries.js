@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import './AllCountries.css'
 function AllCountries() {
   const [countries, setCountries] = useState([]);
 
@@ -35,7 +35,7 @@ function AllCountries() {
     <div>
       <h1>Welcome to the All Countries Page</h1>
       <div className="country-cards">
-        {countries.map((country) => (
+        {countries.map((country, index) => (
           <div className="card" key={country.Country}>
             <h3>{country.Country}</h3>
             <p>Total Confirmed Cases: {country.TotalConfirmed}</p>
@@ -48,6 +48,7 @@ function AllCountries() {
       </div>
     </div>
   );
+  
 }
 
 export default AllCountries;
