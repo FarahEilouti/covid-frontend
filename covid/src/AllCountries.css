@@ -5,17 +5,19 @@
   }
   
   .card {
-    /* width: calc(20% - 20px); */
+    
     margin-bottom: 20px;
     padding: 10px;
     border: 2px solid #e0dddd;
-    border-radius: 5px;
     transition: border-color 0.3s ease;
     font-family: Arial, sans-serif;
+    border-radius: 8px;
+    
   }
   
   .card:hover {
     border-color: rgb(241, 14, 139);
+    background-color: #f6f6f6;
   }
   
   .card h3 {
@@ -40,4 +42,6 @@
   .card button:hover {
     background-color: #024287;
   }
+  
+
   

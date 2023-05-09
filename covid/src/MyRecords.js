@@ -1,38 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+// import './MyRecords.css'
 
 function MyRecords() {
   const [records, setRecords] = useState([]);
-  
-// // Fetch records from the database and set them in the state
-//   useEffect(() => {
-//     fetchRecordsFromDatabase();
-//   }, []);
 
+  useEffect(() => {
+    fetchRecordsFromDatabase();
+  }, []);
 
-  // ------------------------------------------
   const fetchRecordsFromDatabase = async () => {
     try {
-      const response = await axios.get('/api/my-records/');
-      const fetchedRecords = response.data;
+      const response = await axios.get('http://localhost:8000/api/my-records/');
+      const fetchedRecords = response.data.records;
       setRecords(fetchedRecords);
     } catch (error) {
       console.error('Error fetching records:', error);
     }
   };
 
-
-// --------------------------------------------------------
-// Delete record from the database and update the state
   const handleDeleteRecord = (recordId) => {
-      deleteRecordFromDatabase(recordId);
+    deleteRecordFromDatabase(recordId);
   };
 
-
-// -----------------------------------------------------
   const deleteRecordFromDatabase = async (recordId) => {
     try {
-      await axios.delete(`/api/my-records/${recordId}/`);
+      await axios.delete(`http://localhost:8000/api/my-records/${recordId}/`);
       const updatedRecords = records.filter((record) => record.id !== recordId);
       setRecords(updatedRecords);
     } catch (error) {
@@ -40,8 +33,10 @@ function MyRecords() {
     }
   };
 
+  
 
-// --------------------------------------------------------
+
+
   return (
     <div className="my-records-container">
       <h1>MyRecords Page</h1>

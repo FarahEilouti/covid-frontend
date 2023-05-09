@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './AllCountries.css'
+
+
+
 function AllCountries() {
   const [countries, setCountries] = useState([]);
 
@@ -12,6 +15,7 @@ function AllCountries() {
       try {
         const response = await axios.get('https://api.covid19api.com/summary');
         const countriesData = response.data.Countries;
+        
         setCountries(countriesData);
       } catch (error) {
         console.error('Error fetching countries:', error);
@@ -22,18 +26,27 @@ function AllCountries() {
   }, []);
 
 
+  // const handleAddToMyRecords = (country) => {
+  //   console.log('Add to My Records:', country);
+  // };
 
-
-  const handleAddToMyRecords = (country) => {
-    console.log('Add to My Records:', country);
+  
+  const handleAddToMyRecords = async (country) => {
+    try {
+      await axios.post('http://localhost:8000/api/my-records/', country);
+      alert('Country added to My Records!');
+    } catch (error) {
+      console.error('Error adding country to My Records:', error);
+    }
   };
-
+  
+  
 
 
   
   return (
     <div>
-      <h1>Welcome to the All Countries Page</h1>
+      <h1>COVID19 statistics for All Countries</h1>
       <div className="country-cards">
         {countries.map((country, index) => (
           <div className="card" key={country.Country}>
