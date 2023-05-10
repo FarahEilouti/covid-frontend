@@ -31,14 +31,14 @@ function AllCountries() {
   // };
 
   
-  const handleAddToMyRecords = async (country) => {
-    try {
-      await axios.post('http://localhost:8000/api/my-records/', country);
-      alert('Country added to My Records!');
-    } catch (error) {
-      console.error('Error adding country to My Records:', error);
-    }
-  };
+const handleAddToMyRecords = async (country) => {
+  try {
+    await axios.post('https://covid-backend-eta.vercel.app/api/v1/covid/', country);
+    alert('Country added to My Records!');
+  } catch (error) {
+    console.error('Error adding country to My Records:', error);
+  }
+};
   
   
 
